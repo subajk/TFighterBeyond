@@ -6,6 +6,6 @@ import java.awt.*;
 
 public class SkillsDisplay implements Display {
 	public void draw(Graphics g, int x, int y) {
-		//To change body of implemented methods use File | Settings | File Templates.
+
 	}
 }

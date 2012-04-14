@@ -4,7 +4,6 @@ import com.zalgoproductions.util.Potions;
 import org.powerbot.game.api.methods.Settings;
 import org.powerbot.game.api.methods.Widgets;
 
-//TODO GET POISONED TEXTURE OR HOOK
 public class AntipoisonStrategy extends PotionStrategy {
 	public AntipoisonStrategy() {
 		super(Potions.ANTIPOISON);

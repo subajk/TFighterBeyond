@@ -1003,9 +1003,9 @@ public class Fonts {
 			imageBytes = new BASE64Decoder().decodeBuffer(string);
 			return Font.createFont(type, new ByteArrayInputStream(imageBytes));
 		} catch (IOException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			e.printStackTrace();
 		} catch (FontFormatException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			e.printStackTrace();
 		}
 		return null;
 	}

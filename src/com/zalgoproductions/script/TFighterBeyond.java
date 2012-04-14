@@ -19,8 +19,8 @@ import com.zalgoproductions.strategies.script.exit.ExitCondition;
 import com.zalgoproductions.strategies.script.exit.ExitTask;
 import com.zalgoproductions.strategies.script.explorersring.RingCondition;
 import com.zalgoproductions.strategies.script.explorersring.RingTask;
-import com.zalgoproductions.strategies.script.inCombat.InCombatCondition;
-import com.zalgoproductions.strategies.script.inCombat.InCombatTask;
+import com.zalgoproductions.strategies.script.incombat.InCombatCondition;
+import com.zalgoproductions.strategies.script.incombat.InCombatTask;
 import com.zalgoproductions.strategies.script.looting.LootingCondition;
 import com.zalgoproductions.strategies.script.looting.LootingTask;
 import com.zalgoproductions.strategies.script.potions.PotionTask;
@@ -186,18 +186,14 @@ public class TFighterBeyond extends ActiveScript implements PaintListener, Mouse
 	}
 
 	public void mousePressed(MouseEvent e) {
-		//To change body of implemented methods use File | Settings | File Templates.
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		//To change body of implemented methods use File | Settings | File Templates.
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		//To change body of implemented methods use File | Settings | File Templates.
 	}
 
 	public void mouseExited(MouseEvent e) {
-		//To change body of implemented methods use File | Settings | File Templates.
 	}
 }

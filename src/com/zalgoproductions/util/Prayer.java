@@ -17,7 +17,7 @@ public class Prayer {
 		return Skills.getLevel(Skills.PRAYER) * 10;
 	}
 
-	public static boolean setQuickPrayer(boolean activate) {
+	public static void setQuickPrayer(boolean activate) {
 		if (isQuickPrayerOn() != activate) {
 			if (getPrayerPoints() > 1) {
 				Widgets.get(749, 2).click(true);
@@ -25,8 +25,7 @@ public class Prayer {
 					Time.sleep(Random.nextInt(200, 300));
 				}
 			}
-		}      		
-		return isQuickPrayerOn() == activate;
+		}
 	}
 
 	public static boolean isQuickPrayerOn() {

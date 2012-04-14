@@ -859,7 +859,7 @@ public class Images {
 			imageBytes = new BASE64Decoder().decodeBuffer(string);
 			return ImageIO.read(new ByteArrayInputStream(imageBytes));
 		} catch (IOException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			e.printStackTrace();
 		}
 		return null;
 	}

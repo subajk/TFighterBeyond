@@ -41,7 +41,7 @@ public class Attacking {
 					"Ancient Mace", "Saradomin sword"}};
 	
 	
-	private static int maxRadius = 10; //TODO CHANGE TO INT MAX_VALUE AFTER WALKING IS FIXED
+	private static final int maxRadius = 10; //TODO CHANGE TO INT MAX_VALUE AFTER WALKING IS FIXED
 
 	public static final Filter<Npc> NPC_FILTER =
 			new Filter<Npc>() {
@@ -100,16 +100,14 @@ public class Attacking {
 		//45 => Aura
 	}
 
-	public static boolean setSpecialAttack(boolean set) {
+	public static void setSpecialAttack(boolean set) {
 		if (isSpecialEnabled() != set) {
 			Tabs.ATTACK.open();
-			//TODO: UPDATE SPEC BAR LOCATION IF NEEDED
 			final WidgetChild specBar = Widgets.get(884, 4);
 			if (specBar != null && isSpecialEnabled() != set) {
-				return specBar.click(true);
+				specBar.click(true);
 			}
 		}
-		return false;
 	}
 
 	public static boolean shouldSpecial() {

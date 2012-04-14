@@ -1,7 +1,6 @@
 package com.zalgoproductions.strategies.script.antiban;
 
 import org.powerbot.concurrent.Task;
-import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.Tabs;
 import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.widget.Camera;
@@ -9,12 +8,8 @@ import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Time;
 import org.powerbot.game.client.input.Canvas;
 
-//TODO WRITE AFTER RANDOM METHODS
 public class AntibanTask implements Task {
 	public void run() {
-		//TODO Move mouse randomly
-		//TODO Move camera randomly
-		//TODO Open tab randomly
 		
 		if (System.currentTimeMillis() > AntibanCondition.nextAntiban) {
 			AntibanCondition.nextAntiban = System.currentTimeMillis() + Random.nextInt(2000, 30000);
