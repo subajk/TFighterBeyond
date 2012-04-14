@@ -14,6 +14,6 @@ public class PrayerRenewalStrategy extends PotionStrategy{
 	protected boolean needsPotion() {
 		int restoration = 120 + 4 * Skills.getRealLevel(Skills.PRAYER);
 		int prayerUsed = Prayer.getMaxPrayerPoints() - Prayer.getPrayerPoints();
-		return restoration >= prayerUsed;
+		return restoration <= prayerUsed;
 	}
 }
