@@ -1,7 +1,7 @@
-package com.zalgoproductions.strategies.script.inCombat;
+package com.zalgoproductions.strategies.script.incombat;
 
-import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.concurrent.strategy.Condition;
+import org.powerbot.game.api.methods.interactive.Players;
 
 public class InCombatCondition implements Condition {
 	public boolean validate() {

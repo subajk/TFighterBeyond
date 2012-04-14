@@ -60,11 +60,9 @@ public class Eating {
 	}
 	
 	public static int getCurrentPercent() {
-		int hpLevel = Skills.getLevel(Skills.CONSTITUTION);
-		int totalHp = hpLevel * 10;
-		int currHp = Integer.parseInt(Widgets.get(748, 8).getText());
-		double decimal = totalHp / currHp;
-		return (int)decimal * 100;
+		float totalHp = Skills.getLevel(Skills.CONSTITUTION) * 10;
+		float currHp = Integer.parseInt(Widgets.get(748, 8).getText());
+		return Math.round(currHp / totalHp * 100);
 	}
 	
 	public static void setEatPercent(final int percent) {
