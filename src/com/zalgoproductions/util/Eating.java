@@ -26,11 +26,11 @@ public class Eating {
 		}
 	};
 
-	public static void setEatIds(int[] ids) {
+	public static void setFoodIds(int[] ids) {
 		eatIds = ids;
 	}
 
-	public static void setEatNames(String[] names) {
+	public static void setFoodNames(String[] names) {
 		eatNames = names;
 	}
 	

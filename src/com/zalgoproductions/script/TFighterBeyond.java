@@ -3,10 +3,10 @@ package com.zalgoproductions.script;
 import com.zalgoproductions.resources.Fonts;
 import com.zalgoproductions.strategies.script.alchemy.AlchCondition;
 import com.zalgoproductions.strategies.script.alchemy.AlchTask;
-import com.zalgoproductions.strategies.script.antiban.AntibanCondition;
-import com.zalgoproductions.strategies.script.antiban.AntibanTask;
 import com.zalgoproductions.strategies.script.ammo.AmmoCondition;
 import com.zalgoproductions.strategies.script.ammo.AmmoTask;
+import com.zalgoproductions.strategies.script.antiban.AntibanCondition;
+import com.zalgoproductions.strategies.script.antiban.AntibanTask;
 import com.zalgoproductions.strategies.script.attacking.AttackCondition;
 import com.zalgoproductions.strategies.script.attacking.AttackTask;
 import com.zalgoproductions.strategies.script.bones.BonesCondition;
@@ -36,8 +36,8 @@ import com.zalgoproductions.strategies.setup.SleepCondition;
 import com.zalgoproductions.strategies.setup.SleepTask;
 import com.zalgoproductions.util.Attacking;
 import com.zalgoproductions.util.paint.Display;
-import com.zalgoproductions.util.paint.displays.TFighterDisplay;
 import com.zalgoproductions.util.paint.Paint;
+import com.zalgoproductions.util.paint.displays.TFighterDisplay;
 import org.powerbot.concurrent.strategy.Strategy;
 import org.powerbot.game.api.ActiveScript;
 import org.powerbot.game.api.Manifest;
@@ -50,7 +50,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-@Manifest(name = "TFighter Beyond", description = "Universal Fighter", version = 0.1d, authors = {"Zalgo2462"})
+@Manifest(name = "TFighter Beyond", description = "Universal Fighter", version = 0.1d, authors = {"Zalgo2462"}, premium = true)
 public class TFighterBeyond extends ActiveScript implements PaintListener, MouseListener {
 	public static boolean needsSetup = true;
 	public static long startTime;

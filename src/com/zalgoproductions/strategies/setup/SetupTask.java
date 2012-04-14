@@ -47,8 +47,8 @@ public class SetupTask implements Task {
 
 		private JTextField npcBox, lootBox, lootAboveBox, alchBox, foodBox;
 
-		//private JLabel eatPercentLabel;
-		//private JSlider foodSlider;
+		private JLabel eatPercentLabel;
+		private JSlider foodSlider;
 
 		private JButton start;
 
@@ -177,38 +177,40 @@ public class SetupTask implements Task {
 					loot.add(Box.createRigidArea(new Dimension(1,1)));
 				}
 
-//				JPanel food = new JPanel();
-//				food.setLayout(new BoxLayout(food, BoxLayout.PAGE_AXIS));
-//				food.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-//				{
-//					JLabel foodLabel = new JLabel("Food Settings");
-//					JLabel foodBoxLabel = new JLabel("Enter the ids/ names of items to eat");
-//					foodBox = new JTextField("");
-//					foodSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 70);
-//					eatPercentLabel = new JLabel("Eat at " + 70 + "%");
+				JPanel food = new JPanel();
+				food.setLayout(new BoxLayout(food, BoxLayout.PAGE_AXIS));
+				food.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+				{
+					JLabel foodLabel = new JLabel("Food");
+					JLabel foodBoxLabel = new JLabel("Enter the ids/ names of items to eat");
+					foodBox = new JTextField("lobster");
+					foodSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 70);
+					eatPercentLabel = new JLabel("Eat at " + 70 + "%");
+
+					foodLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+					foodBoxLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+					foodBox.setAlignmentX(JTextField.CENTER_ALIGNMENT);
+					eatPercentLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+					foodSlider.setAlignmentX(JSlider.CENTER_ALIGNMENT);
 //
-//					foodLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-//					foodBoxLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-//					foodBox.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-//					eatPercentLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-//					foodSlider.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+					foodSlider.setMajorTickSpacing(10);
+					foodSlider.setMinorTickSpacing(2);
+					foodSlider.addChangeListener(sliderChange);
 //
-//					foodSlider.setMajorTickSpacing(10);
-//					foodSlider.setMinorTickSpacing(1);
-//					foodSlider.addChangeListener(sliderChange);
+					foodBox.setMaximumSize(new Dimension(Integer.MAX_VALUE, foodBox.getPreferredSize().height));
 //
-//					foodBox.setMaximumSize(new Dimension(Integer.MAX_VALUE, alchBox.getPreferredSize().height));
-//
-//					foodBox.setColumns(25);
-//
-//					food.add(foodLabel);
-//					food.add(new JLabel(" "));
-//					food.add(foodBoxLabel);
-//					food.add(foodBox);
-//					food.add(new JLabel(" "));
-//					food.add(eatPercentLabel);
-//					food.add(foodSlider);
-//				}
+					foodBox.setColumns(25);
+
+					food.add(foodLabel);
+					food.add(new JLabel(" "));
+					food.add(foodBoxLabel);
+					food.add(foodBox);
+					food.add(new JLabel(" "));
+					food.add(eatPercentLabel);
+					food.add(foodSlider);
+					food.add(Box.createVerticalGlue());
+					food.add(Box.createRigidArea(new Dimension(1, 1)));
+				}
 
 				JPanel misc = new JPanel();
 				misc.setLayout(new BoxLayout(misc, BoxLayout.PAGE_AXIS));
@@ -256,7 +258,7 @@ public class SetupTask implements Task {
 				JTabbedPane tabbedPane = new JTabbedPane();
 				tabbedPane.addTab("Combat", combat);
 				tabbedPane.addTab("Loot", loot);
-//				tabbedPane.addTab("Food", food);
+				tabbedPane.addTab("Food", food);
 //				tabbedPane.addTab("Bank", bank);
 				tabbedPane.addTab("Misc.", misc);
 				center.add(tabbedPane);
@@ -385,6 +387,24 @@ public class SetupTask implements Task {
 				Alchemy.setAlchIds(idList.size() > 0 ? toIntArray(idList.toArray(new Integer[idList.size()])) : new int[0]);
 				Alchemy.setAlchNames(nameList.size() > 0 ? nameList.toArray(new String[nameList.size()]) : new String[0]);
 
+				ids = foodBox.getText().split(",");
+				idList = new ArrayList<Integer>();
+				nameList = new ArrayList<String>();
+				for (String id4 : ids) {
+					if (id4 != null && !id4.equals("")) {
+						try {
+							int id = Integer.parseInt(id4);
+							idList.add(id);
+						} catch (Exception e1) {
+							nameList.add(id4.toLowerCase());
+						}
+					}
+				}
+
+				Eating.setEatPercent(foodSlider.getValue());
+				Eating.setFoodIds(idList.size() > 0 ? toIntArray(idList.toArray(new Integer[idList.size()])) : new int[0]);
+				Eating.setFoodNames(nameList.size() > 0 ? nameList.toArray(new String[nameList.size()]) : new String[0]);
+
 
 
 //				u.eat.foodOfChoice = u.eat.getFood();
@@ -434,13 +454,14 @@ public class SetupTask implements Task {
 			}
 		};
 
-//		private final ChangeListener sliderChange = new ChangeListener() {
-//			public void stateChanged(ChangeEvent e) {
-//				eatPercentLabel.setText("Eat at " + ((JSlider)e.getSource()).getValue() + "%");
-//				eatPercentLabel.revalidate();
-//				eatPercentLabel.repaint();
-//			}
-//		};
+		private final ChangeListener sliderChange = new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				eatPercentLabel.setText("Eat at " + ((JSlider)e.getSource()).getValue() + "%");
+				eatPercentLabel.revalidate();
+				eatPercentLabel.repaint();
+			}
+		};
+
 ////		private ActionListener disableAllBankingOptions = new ActionListener() {
 ////			public void actionPerformed(ActionEvent e) {
 ////				AbstractButton abstractButton = (AbstractButton) e.getSource();
