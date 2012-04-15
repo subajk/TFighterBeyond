@@ -44,8 +44,8 @@ import org.powerbot.concurrent.strategy.Strategy;
 import org.powerbot.game.api.ActiveScript;
 import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.methods.Game;
-import org.powerbot.game.api.methods.interactive.Npcs;
-import org.powerbot.game.api.wrappers.interactive.Npc;
+import org.powerbot.game.api.methods.interactive.NPCs;
+import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.bot.event.listener.PaintListener;
 
 import java.awt.*;
@@ -175,8 +175,8 @@ public class TFighterBeyond extends ActiveScript implements PaintListener, Mouse
 		}
 		if(Paint.shouldPaint()) {
 			g.setColor(Color.GREEN);
-			for(Npc npc : Npcs.getLoaded(Attacking.NPC_FILTER)) {
-				Polygon[] polygons = npc.getPosition().getBounds();
+			for(NPC npc : NPCs.getLoaded(Attacking.NPC_FILTER)) {
+				Polygon[] polygons = npc.getLocation().getBounds();
 				for(Polygon p : polygons) {
 					g.drawPolygon(p);
 				}

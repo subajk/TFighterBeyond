@@ -8,7 +8,7 @@ import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.util.Filter;
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Time;
-import org.powerbot.game.api.wrappers.interactive.Npc;
+import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.api.wrappers.node.Item;
 import org.powerbot.game.api.wrappers.widget.Widget;
 import org.powerbot.game.api.wrappers.widget.WidgetChild;
@@ -41,12 +41,12 @@ public class Attacking {
 					"Ancient Mace", "Saradomin sword"}};
 	
 	
-	private static final int maxRadius = 10; //TODO CHANGE TO INT MAX_VALUE AFTER WALKING IS FIXED
+	private static final int maxRadius = Integer.MAX_VALUE;
 
-	public static final Filter<Npc> NPC_FILTER =
-			new Filter<Npc>() {
-				public boolean accept(Npc npc) {
-					if(npc.validate() && npc.getHpPercent() > 0 && Calculations.distance(Players.getLocal().getPosition(), npc.getPosition()) < maxRadius &&
+	public static final Filter<NPC> NPC_FILTER =
+			new Filter<NPC>() {
+				public boolean accept(NPC npc) {
+					if(npc.validate() && npc.getHpPercent() > 0 && Calculations.distance(Players.getLocal().getLocation(), npc.getLocation()) < maxRadius &&
 							(utilizeMultiwayCombat || !npc.isInCombat() && npc.getInteracting() == null)) {
 						for(int id : npcIds) {
 							if (npc.getId() == id) {
@@ -63,11 +63,11 @@ public class Attacking {
 				}
 			};
 	
-	public static void setNpcIds(int[] ids) {
+	public static void setNPCIds(int[] ids) {
 		npcIds = ids;
 	}
 	
-	public static void setNpcNames(String[] names) {
+	public static void setNPCNames(String[] names) {
 		npcNames = names;
 	}
 

@@ -7,6 +7,6 @@ import org.powerbot.game.api.methods.interactive.Players;
 
 public class SafespotCondition implements Condition {
 	public boolean validate() {
-		return Calculations.distance(Players.getLocal().getPosition(), Safespot.startTile) > 0 && Safespot.useSafespot;
+		return Calculations.distance(Players.getLocal().getLocation(), Safespot.startTile) > 0 && Safespot.useSafespot;
 	}
 }

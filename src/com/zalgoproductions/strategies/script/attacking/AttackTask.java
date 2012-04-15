@@ -5,15 +5,15 @@ import com.zalgoproductions.util.Safespot;
 import com.zalgoproductions.util.Sleeping;
 import org.powerbot.concurrent.Task;
 import org.powerbot.game.api.methods.Walking;
-import org.powerbot.game.api.methods.interactive.Npcs;
+import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Time;
-import org.powerbot.game.api.wrappers.interactive.Npc;
+import org.powerbot.game.api.wrappers.interactive.NPC;
 
 public class AttackTask implements Task {
 	public void run() {
-		Npc nearest = Npcs.getNearest(Attacking.NPC_FILTER);
+		NPC nearest = NPCs.getNearest(Attacking.NPC_FILTER);
 		if(nearest.isOnScreen()) {
 			nearest.interact("Attack");
 			if(Safespot.useSafespot)
@@ -32,7 +32,7 @@ public class AttackTask implements Task {
 				Time.sleep(Random.nextInt(2000, 3000));
 			}
 		} else {
-			Walking.walk(nearest.getPosition());
+			Walking.walk(nearest.getLocation());
 			if(Safespot.useSafespot)
 				Sleeping.waitForAnim();
 			else

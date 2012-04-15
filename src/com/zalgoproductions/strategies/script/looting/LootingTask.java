@@ -18,7 +18,7 @@ public class LootingTask implements Task {
 			Looting.takeitem(nearest);
 			Sleeping.waitForInventoryChange(count, 1000);
 		} else {
-			Walking.walk(nearest.getPosition());
+			Walking.walk(nearest.getLocation());
 			Sleeping.waitWhileMoving();
 			Time.sleep((Random.nextInt(200, 500)));
 		}

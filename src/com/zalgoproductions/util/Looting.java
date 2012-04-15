@@ -3,11 +3,12 @@ package com.zalgoproductions.util;
 import org.powerbot.game.api.methods.Calculations;
 import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.Players;
-import org.powerbot.game.api.methods.widget.Camera;
 import org.powerbot.game.api.methods.node.Menu;
+import org.powerbot.game.api.methods.widget.Camera;
 import org.powerbot.game.api.util.Filter;
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Time;
+import org.powerbot.game.api.wrappers.map.LocalPath;
 import org.powerbot.game.api.wrappers.node.GroundItem;
 import org.powerbot.game.api.wrappers.node.Item;
 
@@ -18,21 +19,24 @@ import java.util.Map;
 public class Looting {
 	private static int[] lootIDs = {};
 	private static String[] lootNames = {};
-	private static int maxRadius = 10; //TODO SET TO INTEGER.MAX_VALUE AFTER WALKING IS FIXED
+	private static int maxRadius = Integer.MAX_VALUE;
 	private static final HashMap<String, Integer> lootTaken = new HashMap<String, Integer>();
 
 	public static final Filter<GroundItem> LOOT_FILTER =
 			new Filter<GroundItem>() {
 				public boolean accept(GroundItem item) {
-					if(Calculations.distance(Players.getLocal().getPosition(), item.getPosition()) < maxRadius) {
+					if(Calculations.distance(Players.getLocal().getLocation(), item.getLocation()) < maxRadius) {
 						for(int id : lootIDs) {
-							if (item.getGroundItem().getId() == id) {
+							if (item.getGroundItem().getId() == id && (Players.getLocal().getLocation().equals(item.getLocation()) ||
+									new LocalPath(item.getLocation()).validate())) {
 								return true;
 							}
 						}
 						for(String name : lootNames) {
 							if(item.getGroundItem() != null && item.getGroundItem().getDefinition() != null && item.getGroundItem().getDefinition().getName() != null) {
-								if(item.getGroundItem().getDefinition().getName().toLowerCase().contains(name.toLowerCase())) {
+								if(item.getGroundItem().getDefinition().getName().toLowerCase().contains(name.toLowerCase()) &&
+										(Players.getLocal().getLocation().equals(item.getLocation()) ||
+										new LocalPath(item.getLocation()).validate())) {
 									return true;
 								}
 							}

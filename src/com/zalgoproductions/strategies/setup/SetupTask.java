@@ -19,7 +19,7 @@ public class SetupTask implements Task {
 	private static boolean running = false;
 	public void run() {
 		running = true;
-		Safespot.startTile = Players.getLocal().getPosition();
+		Safespot.startTile = Players.getLocal().getLocation();
 		Attacking.initializeEquipment();
 		SkillWatcher.poll();
 		final ZUI zui = new ZUI();
@@ -349,8 +349,8 @@ public class SetupTask implements Task {
 						}
 					}
 				}
-				Attacking.setNpcIds(idList.size() > 0 ? toIntArray(idList.toArray(new Integer[idList.size()])) : new int[0]);
-				Attacking.setNpcNames(nameList.size() > 0 ? nameList.toArray(new String[nameList.size()]) : new String[0]);
+				Attacking.setNPCIds(idList.size() > 0 ? toIntArray(idList.toArray(new Integer[idList.size()])) : new int[0]);
+				Attacking.setNPCNames(nameList.size() > 0 ? nameList.toArray(new String[nameList.size()]) : new String[0]);
 
 				ids = lootBox.getText().split(",");
 				idList = new ArrayList<Integer>();
