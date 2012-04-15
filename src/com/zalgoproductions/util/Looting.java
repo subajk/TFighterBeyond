@@ -8,7 +8,6 @@ import org.powerbot.game.api.methods.widget.Camera;
 import org.powerbot.game.api.util.Filter;
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Time;
-import org.powerbot.game.api.wrappers.map.LocalPath;
 import org.powerbot.game.api.wrappers.node.GroundItem;
 import org.powerbot.game.api.wrappers.node.Item;
 
@@ -27,16 +26,13 @@ public class Looting {
 				public boolean accept(GroundItem item) {
 					if(Calculations.distance(Players.getLocal().getLocation(), item.getLocation()) < maxRadius) {
 						for(int id : lootIDs) {
-							if (item.getGroundItem().getId() == id && (Players.getLocal().getLocation().equals(item.getLocation()) ||
-									new LocalPath(item.getLocation()).validate())) {
+							if (item.getGroundItem().getId() == id) {
 								return true;
 							}
 						}
 						for(String name : lootNames) {
 							if(item.getGroundItem() != null && item.getGroundItem().getDefinition() != null && item.getGroundItem().getDefinition().getName() != null) {
-								if(item.getGroundItem().getDefinition().getName().toLowerCase().contains(name.toLowerCase()) &&
-										(Players.getLocal().getLocation().equals(item.getLocation()) ||
-										new LocalPath(item.getLocation()).validate())) {
+								if(item.getGroundItem().getDefinition().getName().toLowerCase().contains(name.toLowerCase())) {
 									return true;
 								}
 							}
