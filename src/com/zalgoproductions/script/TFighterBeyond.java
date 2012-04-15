@@ -37,6 +37,7 @@ import com.zalgoproductions.strategies.setup.SetupTask;
 import com.zalgoproductions.strategies.setup.SleepCondition;
 import com.zalgoproductions.strategies.setup.SleepTask;
 import com.zalgoproductions.util.Attacking;
+import com.zalgoproductions.util.Looting;
 import com.zalgoproductions.util.paint.Display;
 import com.zalgoproductions.util.paint.Paint;
 import com.zalgoproductions.util.paint.displays.TFighterDisplay;
@@ -45,7 +46,9 @@ import org.powerbot.game.api.ActiveScript;
 import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.interactive.NPCs;
+import org.powerbot.game.api.methods.node.GroundItems;
 import org.powerbot.game.api.wrappers.interactive.NPC;
+import org.powerbot.game.api.wrappers.node.GroundItem;
 import org.powerbot.game.bot.event.listener.PaintListener;
 
 import java.awt.*;
@@ -182,6 +185,12 @@ public class TFighterBeyond extends ActiveScript implements PaintListener, Mouse
 				}
 			}
 			g.setColor(Color.WHITE);
+			for(GroundItem groundItem : GroundItems.getLoaded(Looting.LOOT_FILTER)) {
+				Polygon[] polygons = groundItem.getLocation().getBounds();
+				for(Polygon p : polygons) {
+					g.drawPolygon(p);
+				}
+			}
 			Paint.paintRug(g);
 			Paint.paintTab(g);
 			Paint.paintDisplay(g, TFighterDisplay.class.asSubclass(Display.class));
