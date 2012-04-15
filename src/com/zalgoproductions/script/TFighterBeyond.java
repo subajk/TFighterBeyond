@@ -24,6 +24,8 @@ import com.zalgoproductions.strategies.script.incombat.InCombatTask;
 import com.zalgoproductions.strategies.script.looting.LootingCondition;
 import com.zalgoproductions.strategies.script.looting.LootingTask;
 import com.zalgoproductions.strategies.script.potions.PotionTask;
+import com.zalgoproductions.strategies.script.potions.vials.VialCondition;
+import com.zalgoproductions.strategies.script.potions.vials.VialTask;
 import com.zalgoproductions.strategies.script.prayer.PrayerCondition;
 import com.zalgoproductions.strategies.script.prayer.PrayerTask;
 import com.zalgoproductions.strategies.script.running.RunningCondition;
@@ -133,6 +135,11 @@ public class TFighterBeyond extends ActiveScript implements PaintListener, Mouse
 		inCombatStrategy.setLock(true);
 		inCombatStrategy.setReset(true);
 		provide(inCombatStrategy);
+		
+		Strategy vialStrategy = new Strategy(new VialCondition(), new VialTask());
+		vialStrategy.setLock(true);
+		vialStrategy.setReset(true);
+		provide(vialStrategy);
 
 		Strategy lootingStrategy = new Strategy(new LootingCondition(), new LootingTask());
 		lootingStrategy.setLock(true);
