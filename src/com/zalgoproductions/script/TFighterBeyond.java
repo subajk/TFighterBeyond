@@ -50,7 +50,12 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-@Manifest(name = "TFighter Beyond", description = "Universal Fighter", version = 0.1d, authors = {"Zalgo2462"}, premium = true)
+/**
+ *
+ * V0.2 Bug Fixes and B2B, B2P
+ * V0.1 Public Beta Start
+ */
+@Manifest(name = "TFighter Beyond", description = "Universal Fighter", version = 0.2d, authors = {"Zalgo2462"}, premium = false)
 public class TFighterBeyond extends ActiveScript implements PaintListener, MouseListener {
 	public static boolean needsSetup = true;
 	public static long startTime;
