@@ -1,4 +1,4 @@
-package com.zalgoproductions.strategies.script.continueing;
+package com.zalgoproductions.strategies.script.continuing;
 
 import org.powerbot.concurrent.Task;
 import org.powerbot.game.api.methods.Widgets;
